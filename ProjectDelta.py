@@ -19,11 +19,12 @@ from urllib.request import urlopen
 # import opencage
 # from opencage.geocoder import OpenCageGeocode
 # import folium
-# import sports
 from pydictionary import Dictionary
 from translate import Translator
 from pytube import YouTube
-from pytube.cli import on_progress
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+
 
 
 
@@ -433,15 +434,29 @@ def DownloadAudio(url):
     os.startfile(newFile)
     print(newFile)
     
+def convertFileType(fromType , ToType):
+    speak("Select the file you want to convert,")
+    Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+    filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+    speak(f"Requestion my Database to convert your file , from {fromType} to {ToType}")
+    print("File Name : " + filename)
+    filename.replace(fromType , "")
+    newFileName = filename + ToType
+    os.rename(filename , newFileName )
+    os.startfile(newFileName)
+    print("Done Converting")
+    speak("Your File type has been converted and your older file replaced by your requestion formatted file")
+
 
 
 
 if __name__ == "__main__":
+   
     baseQuery = Listen().lower()
     if "activate" in baseQuery:
 
-        speak("Activating Project delta , your personal companion")
         print("Activating delta , your personal companion")
+        speak("Activating Project delta , your personal companion")
         wishme()
         while True:
 
@@ -780,6 +795,14 @@ if __name__ == "__main__":
                 speak("Enter your youtube video's URL link")
                 url = input("YouTube Video URL:")
                 DownloadAudio(url)
+
+            elif "convert" in query:
+                speak("Sure , Please enter the requested data to process your file")
+                fromType = input("From File Format(.xxx) --> include (.) : ")
+                ToType = input("To File Format(.xxx) --> include (.) : ")
+                convertFileType(fromType , ToType)
+
+
 
 
 
