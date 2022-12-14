@@ -24,6 +24,9 @@ from translate import Translator
 from pytube import YouTube
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
+# import pywhatkit
+import pyautogui
+import time
 
 
 
@@ -448,10 +451,33 @@ def convertFileType(fromType , ToType):
     speak("Your File type has been converted and your older file replaced by your requestion formatted file")
 
 
+# def sendWhatsappMessage(msg):
+#     pywhatkit.sendwhatmsg("+919443956320", msg, 23, 55)
 
+def screenShot():
+    print("Capturing your screen in 3s...")
+    speak("Capturing your screen in 3 seconds")
+    time.sleep(1)
+    print("-3-")
+    speak("3")
+    time.sleep(1)
+    print("-2-")
+    speak("2")
+    time.sleep(1)
+    print("-1-")
+    speak("1")
+    ScreenCapture = pyautogui.screenshot()
+    print("Screen Captured...")
+    speak("Screen Captured")
+    speak("input your filename below , giving an existing file name might override your previous files")
+    fileName = input("Save As : ")
+    FormattedFileName = fileName + ".png"
+    ScreenCapture.save(f"C:\\Users\\NEW\\Desktop\\Narainkarthic\\Programming\\Python\\Python Projects\\VoiceAssistant\\ScreenCapture\\{FormattedFileName}")
+    dir = "C:\\Users\\NEW\\Desktop\\Narainkarthic\\Programming\\Python\\Python Projects\\VoiceAssistant\\ScreenCapture\\" + FormattedFileName
+    speak("Here is your screenshot")
+    os.startfile(dir)  
 
 if __name__ == "__main__":
-   
     baseQuery = Listen().lower()
     if "activate" in baseQuery:
 
@@ -802,14 +828,12 @@ if __name__ == "__main__":
                 ToType = input("To File Format(.xxx) --> include (.) : ")
                 convertFileType(fromType , ToType)
 
-
-
-
+            elif "capture screen" in query or "screenshot" in query or "snip" in query:
+                screenShot()
 
             elif "quit" in query or " close " in query or "good bye" in query or "exit" in query:
                 speak("terminating project delta ")
-                exit()   
-            
+                exit()             
                      
 
             elif "thanks" in query or "thank you" in query:
