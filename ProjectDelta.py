@@ -148,7 +148,7 @@ async def getweather(city):
                 print(f"--> {hourly!r}")
 
 # def track_number():
-#     num = "+91 9443956320"
+#     num = "XXXXXXXXXXX"
 #     pepnumber = phonenumbers.parse(num)
 #     location = phonenumbers.geocoder.description_for_number(pepnumber , "en")
 #     print(location)
@@ -454,7 +454,7 @@ def convertFileType(fromType , ToType):
 
 
 # def sendWhatsappMessage(msg):
-#     pywhatkit.sendwhatmsg("+919443956320", msg, 23, 55)
+#     pywhatkit.sendwhatmsg("XXXXXXXXXX", msg, 23, 55)
 
 def screenShot():
     print("Capturing your screen in 3s...")
