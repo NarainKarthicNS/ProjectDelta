@@ -27,6 +27,7 @@ from tkinter.filedialog import askopenfilename
 # import pywhatkit
 import pyautogui
 import time
+from gnews import GNews
 
 
 
@@ -38,6 +39,7 @@ engine. setProperty("rate", 185)
 engine.setProperty('voice' , voices[6].id)
 # print(voices[6].id)
 webbrowser.register('google-chrome', None)
+google_news = GNews()
 
 #defining the functions of speak function
 def speak(audio):
@@ -477,6 +479,148 @@ def screenShot():
     speak("Here is your screenshot")
     os.startfile(dir)  
 
+def getTopNews():
+    print("Searching...")
+    topNews = google_news.get_top_news()
+    print("======Top Headlines======")
+    speak("Here are the top headlines i gathered , ")
+    for i in topNews:
+        headline = i.get("title")
+        index = topNews.index(i)
+        num = index + 1
+        print(str(num) + " - " + headline)
+        if num < 5:
+            speak(headline)
+        elif num == 5:
+            speak(headline + "and so on")
+    
+    speak("You Can Also Access Headlines of Specific Genres mention below")
+    print("You Can Also Access Headlines of Specific Genres including :")
+    print("WORLD, NATION, BUSINESS, TECHNOLOGY, ENTERTAINMENT, SPORTS, SCIENCE, HEALTH.")
+
+def getTechNews():
+    print("Searching...")
+    topNews = google_news.get_news_by_topic("TECHNOLOGY")
+    print("======Top Tech Headlines======")
+    speak("Here are the top tech headlines i gathered , ")
+    for i in topNews:
+        headline = i.get("title")
+        index = topNews.index(i)
+        num = index + 1
+        print(str(num) + " - " + headline)
+        if num < 5:
+            speak(headline)
+        elif num == 5:
+            speak(headline + "and so on")
+    
+def getScienceNews():
+    print("Searching...")
+    topNews = google_news.get_news_by_topic("SCIENCE")
+    print("======Top Science Headlines======")
+    speak("Here are the top science headlines i gathered , ")
+    for i in topNews:
+        headline = i.get("title")
+        index = topNews.index(i)
+        num = index + 1
+        print(str(num) + " - " + headline)
+        if num < 5:
+            speak(headline)
+        elif num == 5:
+            speak(headline + "and so on")
+
+def getHealthNews():
+    print("Searching...")
+    topNews = google_news.get_news_by_topic("HEALTH")
+    print("======Top Health Headlines======")
+    speak("Here are the top health headlines i gathered , ")
+    for i in topNews:
+        headline = i.get("title")
+        index = topNews.index(i)
+        num = index + 1
+        print(str(num) + " - " + headline)
+        if num < 5:
+            speak(headline)
+        elif num == 5:
+            speak(headline + "and so on")
+    
+def getSportsNews():
+    print("Searching...")
+    topNews = google_news.get_news_by_topic("SPORTS")
+    print("======Top Sports Headlines======")
+    speak("Here are the top sports headlines i gathered , ")
+    for i in topNews:
+        headline = i.get("title")
+        index = topNews.index(i)
+        num = index + 1
+        print(str(num) + " - " + headline)
+        if num < 5:
+            speak(headline)
+        elif num == 5:
+            speak(headline + "and so on")
+
+def getWorldNews():
+    print("Searching...")
+    topNews = google_news.get_news_by_topic("WORLD")
+    print("======Top International Headlines======")
+    speak("Here are the top world headlines i gathered , ")
+    for i in topNews:
+        headline = i.get("title")
+        index = topNews.index(i)
+        num = index + 1
+        print(str(num) + " - " + headline)
+        if num < 5:
+            speak(headline)
+        elif num == 5:
+            speak(headline + "and so on")
+    
+def getNationNews():
+    print("Searching...")
+    topNews = google_news.get_news_by_topic("NATION")
+    print("======Top National Headlines======")
+    speak("Here are the top national headlines i gathered , ")
+    for i in topNews:
+        headline = i.get("title")
+        index = topNews.index(i)
+        num = index + 1
+        print(str(num) + " - " + headline)
+        if num < 5:
+            speak(headline)
+        elif num == 5:
+            speak(headline + "and so on")
+
+def getBusinessNews():
+    print("Searching...")
+    topNews = google_news.get_news_by_topic("BUSINESS")
+    print("======Top Business Headlines======")
+    speak("Here are the top business headlines i gathered , ")
+    for i in topNews:
+        headline = i.get("title")
+        index = topNews.index(i)
+        num = index + 1
+        print(str(num) + " - " + headline)
+        if num < 5:
+            speak(headline)
+        elif num == 5:
+            speak(headline + "and so on")
+    
+def getEntertainmentNews():
+    print("Searching...")
+    topNews = google_news.get_news_by_topic("ENTERTAINMENT")
+    print("======Top Entertainment Headlines======")
+    speak("Here are the top entertainment headlines i gathered , ")
+    for i in topNews:
+        headline = i.get("title")
+        index = topNews.index(i)
+        num = index + 1
+        print(str(num) + " - " + headline)
+        if num < 5:
+            speak(headline)
+        elif num == 5:
+            speak(headline + "and so on")
+
+
+
+
 if __name__ == "__main__":
     baseQuery = Listen().lower()
     if "activate" in baseQuery:
@@ -830,6 +974,39 @@ if __name__ == "__main__":
 
             elif "capture screen" in query or "screenshot" in query or "snip" in query:
                 screenShot()
+
+            elif "news" in query or "affair" in query or "what's going on" in query or "what is going on" in query or "whats going on" in query or "update me" in query:
+                if "science" in query or "signs" in query or "sites"in query:
+                    speak("requesting by database to obtain science news headlines")
+                    getScienceNews()
+                elif "world" in query:
+                    speak("requesting by database to obtain international news headlines")
+                    getWorldNews()
+                elif "nation" in query:
+                    speak("requesting by database to obtain national news headlines")
+                    getNationNews()
+
+                elif "business" in query:
+                    speak("requesting by database to obtain business news headlines")
+                    getBusinessNews()
+
+                elif "tech" in query:
+                    speak("requesting by database to obtain tech news headlines")
+                    getTechNews()
+                elif "entertainment" in query:
+                    speak("requesting by database to obtain entertainment news headlines")
+                    getEntertainmentNews()
+
+                elif "sports" in query:
+                    speak("requesting by database to obtain sports news headlines")
+                    getSportsNews()
+
+                elif "health" in query:
+                    speak("requesting by database to obtain health news headlines")
+                    getHealthNews()
+                else:
+                    speak("requesting by database to obtain top news headlines")
+                    getTopNews()
 
             elif "quit" in query or " close " in query or "good bye" in query or "exit" in query:
                 speak("terminating project delta ")
