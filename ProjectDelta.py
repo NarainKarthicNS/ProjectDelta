@@ -3,31 +3,24 @@ import datetime #To get all data related to date time
 import speech_recognition as sr #Speech to text conversion library
 import wikipedia #to get data from wikipedia API
 import webbrowser #To open website on the web
-import os 
+import os #To Operate System Function Such a Saving As Well As Power Controls
 import wolframalpha #To get answer to questions from wolfram alpha ai algorithms
-import pyjokes 
-import ecapture as ec
-import winshell
-import AppOpener
-import python_weather
-import asyncio
-import json
-from urllib.request import urlopen
-# import phonenumbers
-# from phonenumbers import geocoder 
-# from phonenumbers import carrier
-# import opencage
-# from opencage.geocoder import OpenCageGeocode
-# import folium
-from pydictionary import Dictionary
-from translate import Translator
-from pytube import YouTube
-from tkinter import Tk
-from tkinter.filedialog import askopenfilename
-# import pywhatkit
-import pyautogui
-import time
-from gnews import GNews
+import pyjokes  #To get jokes relating to programming 
+import ecapture as ec #To capture photo through webcam
+import winshell #To process Recycle bin and other functions
+import AppOpener #To open applications hands off
+import python_weather #To get accurate weather predictions
+import asyncio #To Use async methods for weather module
+import json #To get user data
+from urllib.request import urlopen #To process user data
+from pydictionary import Dictionary #TO do all dictionary functions
+from translate import Translator #To Translate languages
+from pytube import YouTube #To download YT videos and extract audio from them
+from tkinter import Tk #To access filedialouge box gui
+from tkinter.filedialog import askopenfilename #To ask to open a file through gui
+import pyautogui #To take ScreenShots and Other GUI functions
+import time #To access time related functions
+from gnews import GNews #To get top headlines and genre based news
 
 
 
@@ -98,6 +91,7 @@ def takeCommand():
 
     return query
 
+#Get Location Data to process & access weather forecast 
 def getLocationData():
     url = "http://ipinfo.io/json"
     response = urlopen(url)
@@ -105,6 +99,7 @@ def getLocationData():
     city = data['city']
     return city
 
+# Get Weather Forecast data through "python_weather" module
 async def getweather(city):
     print("Searching...")
     async with python_weather.Client(format=python_weather.IMPERIAL) as client:
@@ -147,28 +142,7 @@ async def getweather(city):
                 
                 print(f"--> {hourly!r}")
 
-# def track_number():
-#     num = "XXXXXXXXXXX"
-#     pepnumber = phonenumbers.parse(num)
-#     location = phonenumbers.geocoder.description_for_number(pepnumber , "en")
-#     print(location)
-#     service_pro = phonenumbers.parse(num)
-#     print(carrier.name_for_number(service_pro , "en"))
-
-#     api_key = "8374efaf34ea48979e07704d2ac0836d"
-#     geocoder = OpenCageGeocode(api_key)
-#     geo_query = str(location)
-#     result = geocoder.geocode(geo_query)
-#     print(result)
-#     lat = result[0]["geometry"]["lat"]
-#     lng = result[0]["geometry"]["lng"]
-#     print(lat,lng)
-
-#     myMap = folium.Map(location=[lat,lng] , zoom_start=9)
-#     folium.Marker([lat, lng] , popup=location).add_to(myMap)
-#     myMap.save("tracked_location.html")
-#     print(f"tracked file of number {num} saved...")
-
+#TO search DataBase through WOlframAlpha AI
 def searchDatabase(Q):
     app_id = 'VJRU4R-4YXR4Y5YV2'
     client = wolframalpha.Client(app_id)
@@ -180,11 +154,14 @@ def searchDatabase(Q):
     else:
         speak("I currently don't have any information regarding that!")
 
+#To get word meaning using Dictionary Module
 def getMeaning(word):
     dict = Dictionary(word)
     meaning = dict.meanings()
     dict.print_meanings("blue")
     speak(meaning)
+
+#To get word synonym using Dictionary Module
 
 def getSynonym(word):
     dict = Dictionary(word)
@@ -192,6 +169,7 @@ def getSynonym(word):
     dict.print_synonyms("green")
     speak(f"synonyms of{word} include {synonym}")
 
+#To get word antonym using Dictionary Module
 def getAntonym(word):
     dict = Dictionary(word)
     antonym = dict.antonyms()
@@ -389,6 +367,7 @@ ISO639 = {
 
 }
 
+#To translate from ENG to 185+ ISO639 Verified Languages
 def translate(to_lang):
     lang = ISO639[to_lang.lower()]
     translator= Translator(to_lang=lang)
@@ -398,6 +377,7 @@ def translate(to_lang):
     speak("Translating")    
     print(translation)
 
+#Download YouTube Video 
 def DownloadVideo(url):
     yt = YouTube(url)
     title = yt.title
@@ -408,7 +388,8 @@ def DownloadVideo(url):
     print("Downloading...")
     speak(f"Requesting my database to download ,{title} video")
     stream = yt.streams.get_by_itag(22)
-    dir = "C:\\Users\\NEW\\Desktop\\Narainkarthic\\Programming\\Python\\Python Projects\\VoiceAssistant\\YoutubeDownloads"
+    path = os.getcwd()
+    dir = path + "\YoutubeDownloads"
     stream.download(output_path= dir)
     print("--> Download Complete")
     speak("Dowload Complete")
@@ -419,6 +400,7 @@ def DownloadVideo(url):
     os.startfile(file)
     print(file)
 
+#Extract Audio From YouTube Video
 def DownloadAudio(url):
     yt = YouTube(url)
     title = yt.title
@@ -426,7 +408,8 @@ def DownloadAudio(url):
     audio = yt.streams.filter(only_audio=True, file_extension='mp4').first()
     print("Extracting...")
     speak(f"Requesting my database to extract audio from ,{title} video")
-    dir = "C:\\Users\\NEW\\Desktop\\Narainkarthic\\Programming\\Python\\Python Projects\\VoiceAssistant\\AudioDownloads"
+    path = os.getcwd()
+    dir = path + "\AudioDownloads"
     audio.download(output_path= dir)
     print("--> Extraction Complete")
     speak("Extraction Complete")
@@ -438,7 +421,8 @@ def DownloadAudio(url):
     print("Your file can be found in below location")
     os.startfile(newFile)
     print(newFile)
-    
+
+#Convert FileType from one type to another  
 def convertFileType(fromType , ToType):
     speak("Select the file you want to convert,")
     Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
@@ -452,10 +436,7 @@ def convertFileType(fromType , ToType):
     print("Done Converting")
     speak("Your File type has been converted and your older file replaced by your requestion formatted file")
 
-
-# def sendWhatsappMessage(msg):
-#     pywhatkit.sendwhatmsg("XXXXXXXXXX", msg, 23, 55)
-
+#Capture Whole Screen Using PyAutoGui Module
 def screenShot():
     print("Capturing your screen in 3s...")
     speak("Capturing your screen in 3 seconds")
@@ -474,11 +455,29 @@ def screenShot():
     speak("input your filename below , giving an existing file name might override your previous files")
     fileName = input("Save As : ")
     FormattedFileName = fileName + ".png"
-    ScreenCapture.save(f"C:\\Users\\NEW\\Desktop\\Narainkarthic\\Programming\\Python\\Python Projects\\VoiceAssistant\\ScreenCapture\\{FormattedFileName}")
-    dir = "C:\\Users\\NEW\\Desktop\\Narainkarthic\\Programming\\Python\\Python Projects\\VoiceAssistant\\ScreenCapture\\" + FormattedFileName
+    path = os.getcwd()
+    dir = path + "\ScreenCapture\\"
+    file = dir + FormattedFileName
+    ScreenCapture.save(file)
     speak("Here is your screenshot")
-    os.startfile(dir)  
+    os.startfile(file)
 
+#Snip Parts of Screen Using Windows Builtin Snip Tool
+def snip():
+    print("Opening Screen Snip in 3s...")
+    speak("Opening Screen Snip in 3 seconds")
+    time.sleep(1)
+    print("-3-")
+    speak("3")
+    time.sleep(1)
+    print("-2-")
+    speak("2")
+    time.sleep(1)
+    print("-1-")
+    speak("1")
+    pyautogui.hotkey('win' , 'shift' , 's') 
+    
+#Get Top Headlines using GoogleNews
 def getTopNews():
     print("Searching...")
     topNews = google_news.get_top_news()
@@ -498,6 +497,7 @@ def getTopNews():
     print("You Can Also Access Headlines of Specific Genres including :")
     print("WORLD, NATION, BUSINESS, TECHNOLOGY, ENTERTAINMENT, SPORTS, SCIENCE, HEALTH.")
 
+#Get Tech Headlines using GoogleNews
 def getTechNews():
     print("Searching...")
     topNews = google_news.get_news_by_topic("TECHNOLOGY")
@@ -512,7 +512,8 @@ def getTechNews():
             speak(headline)
         elif num == 5:
             speak(headline + "and so on")
-    
+
+#Get Science Headlines using GoogleNews   
 def getScienceNews():
     print("Searching...")
     topNews = google_news.get_news_by_topic("SCIENCE")
@@ -528,6 +529,7 @@ def getScienceNews():
         elif num == 5:
             speak(headline + "and so on")
 
+#Get Health Headlines using GoogleNews
 def getHealthNews():
     print("Searching...")
     topNews = google_news.get_news_by_topic("HEALTH")
@@ -542,7 +544,8 @@ def getHealthNews():
             speak(headline)
         elif num == 5:
             speak(headline + "and so on")
-    
+
+#Get Sports Headlines using GoogleNews   
 def getSportsNews():
     print("Searching...")
     topNews = google_news.get_news_by_topic("SPORTS")
@@ -558,6 +561,7 @@ def getSportsNews():
         elif num == 5:
             speak(headline + "and so on")
 
+#Get International Headlines using GoogleNews
 def getWorldNews():
     print("Searching...")
     topNews = google_news.get_news_by_topic("WORLD")
@@ -572,7 +576,8 @@ def getWorldNews():
             speak(headline)
         elif num == 5:
             speak(headline + "and so on")
-    
+
+#Get National Headlines using GoogleNews  
 def getNationNews():
     print("Searching...")
     topNews = google_news.get_news_by_topic("NATION")
@@ -588,6 +593,7 @@ def getNationNews():
         elif num == 5:
             speak(headline + "and so on")
 
+#Get Business Headlines using GoogleNews
 def getBusinessNews():
     print("Searching...")
     topNews = google_news.get_news_by_topic("BUSINESS")
@@ -602,7 +608,8 @@ def getBusinessNews():
             speak(headline)
         elif num == 5:
             speak(headline + "and so on")
-    
+
+#Get Entertainment Headlines using GoogleNews   
 def getEntertainmentNews():
     print("Searching...")
     topNews = google_news.get_news_by_topic("ENTERTAINMENT")
@@ -618,6 +625,146 @@ def getEntertainmentNews():
         elif num == 5:
             speak(headline + "and so on")
 
+#ShutDown PC using OS Module and os.system function
+def shutdown ():
+    speak("Do You Wish To ShutDown Your PC ? You Could Lose Your Unsaved Work")
+    print("Do You Wish To ShutDown Your PC ? You Could Lose Your Unsaved Work")
+    newQuery = Listen().lower()
+    if "yes" in newQuery or "yup" in newQuery or "yeah" in newQuery or "yea" in newQuery:
+        print("Shutting down your pc in 10s...")
+        speak("Shutting down your pc in 10 seconds")
+        time.sleep(1)
+        print("-10-")
+        speak("10")
+        time.sleep(1)
+        print("-9-")
+        speak("9")
+        time.sleep(1)
+        print("-8-")
+        speak("8")
+        time.sleep(1)
+        print("-7-")
+        speak("7")
+        time.sleep(1)
+        print("-6-")
+        speak("6")
+        time.sleep(1)
+        print("-5-")
+        speak("5")
+        time.sleep(1)
+        print("-4-")
+        speak("4")
+        time.sleep(1)
+        print("-3-")
+        speak("3")
+        time.sleep(1)
+        print("-2-")
+        speak("2")
+        time.sleep(1)
+        print("-1-")
+        speak("1")
+        os.system("shutdown /s /t 3")
+        exit()
+    else:
+        speak("Ok")
+
+#Restart PC using OS Module and os.system function
+def restart():
+    speak("Do You Wish To Restart Your PC ? You Could Lose Your Unsaved Work")
+    print("Do You Wish To Restart Your PC ? You Could Lose Your Unsaved Work")
+    newQuery = Listen().lower()
+    if "yes" in newQuery or "yup" in newQuery or "yeah" in newQuery or "yea" in newQuery:
+        print("Restarting your pc in 10s...")
+        speak("Restarting your pc in 10 seconds")
+        time.sleep(1)
+        print("-10-")
+        speak("10")
+        time.sleep(1)
+        print("-9-")
+        speak("9")
+        time.sleep(1)
+        print("-8-")
+        speak("8")
+        time.sleep(1)
+        print("-7-")
+        speak("7")
+        time.sleep(1)
+        print("-6-")
+        speak("6")
+        time.sleep(1)
+        print("-5-")
+        speak("5")
+        time.sleep(1)
+        print("-4-")
+        speak("4")
+        time.sleep(1)
+        print("-3-")
+        speak("3")
+        time.sleep(1)
+        print("-2-")
+        speak("2")
+        time.sleep(1)
+        print("-1-")
+        speak("1")
+        os.system("shutdown /r /t 3")
+        exit()
+    else:
+        speak("Ok")
+#Logout PC using OS Module and os.system function
+def logout():
+    speak("Do You Wish To Logout Your PC ? You Could Lose Your Unsaved Work")
+    print("Do You Wish To Logout Your PC ? You Could Lose Your Unsaved Work ")
+    newQuery = Listen().lower()
+    if "yes" in newQuery or "yup" in newQuery or "yeah" in newQuery or "yea" in newQuery:
+        print("Logging Out your pc in 5s...")
+        speak("Logging Out your pc in 5 seconds")
+        time.sleep(1)
+        print("-5-")
+        speak("5")
+        time.sleep(1)
+        print("-4-")
+        speak("4")
+        time.sleep(1)
+        print("-3-")
+        speak("3")
+        time.sleep(1)
+        print("-2-")
+        speak("2")
+        time.sleep(1)
+        print("-1-")
+        speak("1")
+        os.system("shutdown -l ")
+        exit()
+    else:
+        speak("Ok")
+
+#Hibernate PC using OS Module
+def sleepPC ():
+    speak("Do You Wish To Put Your PC to Sleep ? ")
+    print("Do You Wish To Put Your PC to Sleep ?")
+    newQuery = Listen().lower()
+    if "yes" in newQuery or "yup" in newQuery or "yeah" in newQuery or "yea" in newQuery:
+        print("Suspending your pc in 5s...")
+        speak("Suspending your pc in 5 seconds")
+        time.sleep(1)
+        print("-5-")
+        speak("5")
+        time.sleep(1)
+        print("-4-")
+        speak("4")
+        time.sleep(1)
+        print("-3-")
+        speak("3")
+        time.sleep(1)
+        print("-2-")
+        speak("2")
+        time.sleep(1)
+        print("-1-")
+        speak("1")
+        os.system("rundll32.exe powrprof.dll,SetSuspendState 0,1,0")
+        exit()
+    else:
+        speak("Ok")
 
 
 
@@ -661,7 +808,7 @@ if __name__ == "__main__":
                 query = query.replace("is"  , "")
                 query = query.replace("for"  , "")
                 
-                
+                #Using Wikipedia module to access Wikipedia Info
                 try:
                     results = wikipedia.summary(query , auto_suggest=False , sentences = 2)
                     speak("Here is the closest matching result I found for your query ")
@@ -699,13 +846,6 @@ if __name__ == "__main__":
                 print("Opening Google")
                 speak("Opening Google")
 
-            elif "open spotify" in query:
-                webbrowser.register('chrome',None,
-                webbrowser.BackgroundBrowser("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"))
-                webbrowser.get('chrome').open("www.spotify.com")
-                print("Opening Spotify")
-                speak("Opening Spotify")
-            
             elif "song" in query :
                 speak("Which song do you want me to play?")
                 song = takeCommand().lower()
@@ -804,25 +944,6 @@ if __name__ == "__main__":
                 speak("capturing a photo through your cam")
                 ec.capture(0,"deltaCam" , "img.png")
             
-            elif  "what is" in query or "who is" in query or "where is" in query or "why is" in query or "how is" in query:
-                query = query.replace("hey" , "")
-                query = query.replace("delta" , "")
-                query = query.replace("can you" , "")
-                query = query.replace("could you" , "")
-                query = query.replace("tell me" , "")
-                query = query.replace("say me" , "")
-                query = query.replace("search" , "")
-                query = query.replace("find me" , "")
-                query = query.replace("dear" , "")                
-                speak(f"Searching my database for {query}")
-                Q = query
-                searchDatabase(Q)
-
-            elif "empty recycle bin" in query:
-                winshell.recycle_bin().empty(confirm=False, show_progress=False, sound=True)
-                print("Recycle Bin emptied")
-                speak("Recycle Bin emptied")       
-
             elif "the weather" in query or "forecast" in query:
                 
                 speak("Which cities forecast do you want me to look up for?")
@@ -849,6 +970,27 @@ if __name__ == "__main__":
                         asyncio.run(getweather(city))
                 else:
                     speak("Please specify the city and try again")
+            
+            elif  "what is" in query or "who is" in query or "where is" in query or "why is" in query or "how is" in query:
+                query = query.replace("hey" , "")
+                query = query.replace("delta" , "")
+                query = query.replace("can you" , "")
+                query = query.replace("could you" , "")
+                query = query.replace("tell me" , "")
+                query = query.replace("say me" , "")
+                query = query.replace("search" , "")
+                query = query.replace("find me" , "")
+                query = query.replace("dear" , "")                
+                speak(f"Searching my database for {query}")
+                Q = query
+                searchDatabase(Q)
+
+            elif "empty recycle bin" in query:
+                winshell.recycle_bin().empty(confirm=False, show_progress=False, sound=True)
+                print("Recycle Bin emptied")
+                speak("Recycle Bin emptied")       
+
+            
             
             elif "calculate" in query:
                 speak("please enter what to calculate below")
@@ -921,7 +1063,7 @@ if __name__ == "__main__":
                 webbrowser.register('chrome',None,
                 webbrowser.BackgroundBrowser("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"))
                 webbrowser.get('chrome').open("https://www.youtube.com/playlist?list=PLPpXBmEDOPV4vYuwMJoCnHiOa7fF51e1A")
-                speak("Opening Dr.Stone OST Soundtrack")
+                speak("Opening Dr.Stone O S T Soundtrack")
 
             elif "doctor stone" in query:
 
@@ -948,7 +1090,7 @@ if __name__ == "__main__":
                 query = query.replace("run"  , "")
 
                 
-                AppOpener.run(query)
+                AppOpener.run(query.capitalize())
                 speak(f"trying to open {query} application")
 
             elif "translate" in query:
@@ -972,8 +1114,11 @@ if __name__ == "__main__":
                 ToType = input("To File Format(.xxx) --> include (.) : ")
                 convertFileType(fromType , ToType)
 
-            elif "capture screen" in query or "screenshot" in query or "snip" in query:
+            elif "capture screen" in query or "screenshot" in query:
                 screenShot()
+            
+            elif "snip" in query:
+                snip()
 
             elif "news" in query or "affair" in query or "what's going on" in query or "what is going on" in query or "whats going on" in query or "update me" in query:
                 if "science" in query or "signs" in query or "sites"in query:
@@ -1007,15 +1152,26 @@ if __name__ == "__main__":
                 else:
                     speak("requesting by database to obtain top news headlines")
                     getTopNews()
+            
+            elif "shutdown" in query or "shut down" in query:
+                shutdown()
+
+            elif "sleep" in query or "suspend" in query or "hibernate" in query or "hibernation" in query:
+                sleepPC()
+            
+            elif "logout" in query or "sign out" in query or "log out" in query:
+                logout()
+            
+            elif "restart" in query:
+                restart()
 
             elif "quit" in query or " close " in query or "good bye" in query or "exit" in query:
                 speak("terminating project delta ")
-                exit()             
-                     
+                exit()                       
 
             elif "thanks" in query or "thank you" in query:
-                print("My Pleasure!")
-                speak("My Pleasure!")
+                print("You're Welcome!")
+                speak("You're Welcome!")
 
             
 
