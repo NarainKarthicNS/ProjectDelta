@@ -43,13 +43,13 @@ def speak(audio):
 def wishme():
     hour = int(datetime.datetime.now().hour)
     if hour >= 0 and hour < 12:
-        speak("Good Morning Narain" )
+        speak("Good Morning" )
     
     elif hour >= 12 and hour < 18:
-        speak("Good Afternoon Narain")
+        speak("Good Afternoon")
 
     else:
-        speak("Good Evening Narain")
+        speak("Good Evening")
     
     speak("How may I assist you?")
 
@@ -786,11 +786,7 @@ if __name__ == "__main__":
             elif "what does delta stand for" in query:
                 speak("delta stands for Dynamic Executable Logic Based Technological Assistant")
                 print("delta stands for Dynamic Executable Logic Based Technological Assistant")
-            
-            elif "what is love" in query:
-                print("Even though i can't feel emotion , Love is the chemical defect found in the losing side and it is defined as the 7th sense , that occludes other senses from working")
-                speak("Even though i can't feel emotion , Love is the chemical defect found in the losing side and it is defined as the 7th sense , that occludes other senses from working")
-            
+       
             elif  "wikipedia" in query:
                 query = query.replace("wikipedia"  , "")
                 query = query.replace("search"  , "")
@@ -868,15 +864,7 @@ if __name__ == "__main__":
                 print(f"Searching Spotify for {song}")
                 speak(f"Searching Spotify for {song}")
 
-            elif "music playlist" in query:
-                
-                webbrowser.register('chrome',None,
-                webbrowser.BackgroundBrowser("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"))
-                webbrowser.get('chrome').open("https://www.youtube.com/playlist?list=PLPpXBmEDOPV4D7IYj3dRn--IAvgwvktlW")
-                print("Opening your Bass Music playlist")
-                speak("Opening your Bass Music playlist")
-                
-
+                  
             elif "open python" in query:
                 speak("Do you want me to open official site or documentation")
                 newQuery = takeCommand()
@@ -1059,20 +1047,7 @@ if __name__ == "__main__":
                 word = query
                 getAntonym(word)
 
-            elif "doctor stone soundtrack" in query:
-                webbrowser.register('chrome',None,
-                webbrowser.BackgroundBrowser("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"))
-                webbrowser.get('chrome').open("https://www.youtube.com/playlist?list=PLPpXBmEDOPV4vYuwMJoCnHiOa7fF51e1A")
-                speak("Opening Dr.Stone O S T Soundtrack")
-
-            elif "doctor stone" in query:
-
-                webbrowser.register('chrome',None,
-                webbrowser.BackgroundBrowser("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"))
-                webbrowser.get('chrome').open("https://flixhd.cc/tv/watch-dr-stone-full-42231")
-                speak("Opening Dr.Stone Anime")
-
-            
+                       
             elif "open" in query:
                 query = query.replace("know"  , "")
                 query = query.replace("kind off"  , "")
