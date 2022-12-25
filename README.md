@@ -57,6 +57,6 @@ Some of these modules are built-in with python 3 such as os , json , urllib , et
 
 How to Use DELTA?
 
-Just Run the "ProjectDelta.py".After The file starts to run, say "Activate" to activate your assistant and your good to go,call out your query and assistant will do your task, say "exit" to quit.
+Just Run the "ProjectDelta.py".After The file starts to run, say "Activate" to activate your assistant and your good to go,call out your query and assistant will do your task, say "exit" to quit.You can read the in-line comments to know what each function or method does.The assistant will use the builtin voice your pc has for more fluent speech you will have to download external voices. 
 
 For those of you who just want to run the assistant ".exe" version coming soon but for python geeks just try it out.
