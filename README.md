@@ -1,5 +1,5 @@
 # ProjectDELTA
-**Project DELTA is Voice Assistant made with Python and powered by AI Speech Recognition.It is an Desktop Assistant to Automate Daily Activities using your voice and a mega-project that I have been working on for months. DELTA stands for Dynamic Executable Logic-based Technological Assistant (I came up  with this stuff).It uses many external libraries to automate your tasks.**
+**Project DELTA is Voice Assistant made with Python and powered by AI Speech Recognition.It is a Desktop Assistant to Automate Daily Activities using your voice and a mega-project that I have been working on for months. DELTA stands for Dynamic Executable Logic-based Technological Assistant (I came up  with this stuff).It uses many external libraries to automate your tasks.**
 
 
 Functionalities:
@@ -16,13 +16,13 @@ Functionalities:
 -**Take full screenshots or snips of parts of screen**
 -**Download youtube videos**
 -**Extract Audio from youtube video**
--**Get Weather Details for any city(or your location say "my location")**
+-**Get Weather Details for any city(or for your location say "my location")**
 -**Convert any File Type**
 -**Get Top News Headline** 
 -**Hunt specific topic related headlines**
--**ShutDown , Hibernate or logout your PC**
+-**ShutDown , Hibernate or Logout your PC**
 -**Translate to 185+ Languages** verified by ISO-639(1)[Refer ISO-639 spreadsheet file for available languages]
--**Many More Features**
+-**+Many More Features**
 
 
 Required Python Modules:
