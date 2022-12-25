@@ -29,7 +29,7 @@ from gnews import GNews #To get top headlines and genre based news
 engine = pyttsx3.init('sapi5')#sapi5 is microsoft's  Speech Application Programming Interface  
 voices = engine.getProperty('voices')
 engine. setProperty("rate", 185)
-engine.setProperty('voice' , voices[6].id)
+engine.setProperty('voice' , voices[0].id) #-->Change the voice id number to get different voices 0 will use first voice
 # print(voices[6].id)
 webbrowser.register('google-chrome', None)
 google_news = GNews()
