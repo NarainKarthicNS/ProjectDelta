@@ -52,8 +52,11 @@ Required Python Modules:
 You can install all these modules by using:
 `pip install <module_name>` [in your terminal].
 
-##How to Use?
-Some of these modules are built-in with python 3 such as os , json , urllib , etc --> if you get any errors that they dont exist then they are built-in[mostly]
-Then Just Run the "ProjectDelta.py" .After The file starts run say "Activate" to activate your assistant and your good to go,call out your query and assistant will do your task, say "exit" to quit.
 
-For those of you who just want to run the assistant ".exe" verson coming soon but for python geeks just try it out.
+Some of these modules are built-in with python 3 such as os , json , urllib , etc --> if you get any errors that they dont exist then they are built-in[mostly]
+
+How to Use DELTA?
+
+Just Run the "ProjectDelta.py".After The file starts to run, say "Activate" to activate your assistant and your good to go,call out your query and assistant will do your task, say "exit" to quit.
+
+For those of you who just want to run the assistant ".exe" version coming soon but for python geeks just try it out.
