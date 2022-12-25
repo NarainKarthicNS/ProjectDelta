@@ -2,7 +2,7 @@
 **Project DELTA is Voice Assistant made with Python and powered by AI Speech Recognition.It is a Desktop Assistant to Automate Daily Activities using your voice and a mega-project that I have been working on for months. DELTA stands for Dynamic Executable Logic-based Technological Assistant (I came up  with this stuff).It uses many external libraries to automate your tasks.**
 
 
-Functionalities:
+## Functionalities:
 >-**Refer Wikipedia**
 -**Open and Search YouTube and Google**
 -**Search for songs on Spotify**
@@ -25,7 +25,7 @@ Functionalities:
 -**+Many More Features**
 
 
-Required Python Modules:
+## Required Python Modules:
  >-pyttsx3
  -datetime
  -speech_recognition
@@ -55,7 +55,7 @@ You can install all these modules by using:
 
 Some of these modules are built-in with python 3 such as os , json , urllib , etc --> if you get any errors that they dont exist then they are built-in[mostly]
 
-How to Use DELTA?
+## How to Use DELTA?
 
 Just Run the "ProjectDelta.py".After The file starts to run, say "Activate" to activate your assistant and your good to go,call out your query and assistant will do your task, say "exit" to quit.You can read the in-line comments to know what each function or method does.The assistant will use the builtin voice your pc has for more fluent speech you will have to download external voices. 
 
