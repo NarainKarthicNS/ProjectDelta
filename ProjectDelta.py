@@ -769,6 +769,7 @@ def sleepPC ():
 
 
 if __name__ == "__main__":
+    print("==========ProjectDELTA==========")
     baseQuery = Listen().lower()
     if "activate" in baseQuery:
 
