@@ -52,8 +52,8 @@
 You can install all these modules by using:
 `pip install <module_name>` [in your terminal].
 
-
-Some of these modules are built-in with python 3 such as os , json , urllib , etc --> if you get any errors that they dont exist then they are built-in[mostly]
+### Note:
+For Some Reason If PyDictionary doesn't install then run the command `pip install 'futures<3.0.0'` and try , it should works.Also Know that some of these modules are built-in with python 3 such as os , json , urllib , etc --> if you get any errors that they dont exist then they are built-in[mostly]
 
 ## How to Use DELTA?
 
