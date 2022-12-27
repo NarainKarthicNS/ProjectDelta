@@ -27,6 +27,7 @@
 
 ## Required Python Modules:
  >-pyttsx3
+ -PyAudio
  -datetime
  -speech_recognition
  -wikipedia
